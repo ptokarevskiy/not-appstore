@@ -9,21 +9,19 @@
 /* Begin PBXBuildFile section */
 		A4E94FB72440B400000FF6B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E94FB62440B400000FF6B8 /* AppDelegate.swift */; };
 		A4E94FB92440B400000FF6B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E94FB82440B400000FF6B8 /* SceneDelegate.swift */; };
-		A4E94FBB2440B400000FF6B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E94FBA2440B400000FF6B8 /* ContentView.swift */; };
+		A4E94FBB2440B400000FF6B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E94FBA2440B400000FF6B8 /* ViewController.swift */; };
 		A4E94FBD2440B403000FF6B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4E94FBC2440B403000FF6B8 /* Assets.xcassets */; };
-		A4E94FC02440B403000FF6B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4E94FBF2440B403000FF6B8 /* Preview Assets.xcassets */; };
-		A4E94FC32440B403000FF6B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4E94FC12440B403000FF6B8 /* LaunchScreen.storyboard */; };
+		A4E94FCB2440D2F6000FF6B8 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E94FCA2440D2F6000FF6B8 /* BaseTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A4E94FB32440B400000FF6B8 /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E94FB62440B400000FF6B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4E94FB82440B400000FF6B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A4E94FBA2440B400000FF6B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A4E94FBA2440B400000FF6B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A4E94FBC2440B403000FF6B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A4E94FBF2440B403000FF6B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A4E94FC22440B403000FF6B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4E94FC42440B403000FF6B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4E94FCA2440D2F6000FF6B8 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,21 +56,12 @@
 			children = (
 				A4E94FB62440B400000FF6B8 /* AppDelegate.swift */,
 				A4E94FB82440B400000FF6B8 /* SceneDelegate.swift */,
-				A4E94FBA2440B400000FF6B8 /* ContentView.swift */,
+				A4E94FBA2440B400000FF6B8 /* ViewController.swift */,
+				A4E94FCA2440D2F6000FF6B8 /* BaseTabBarController.swift */,
 				A4E94FBC2440B403000FF6B8 /* Assets.xcassets */,
-				A4E94FC12440B403000FF6B8 /* LaunchScreen.storyboard */,
 				A4E94FC42440B403000FF6B8 /* Info.plist */,
-				A4E94FBE2440B403000FF6B8 /* Preview Content */,
 			);
 			path = AppStore;
-			sourceTree = "<group>";
-		};
-		A4E94FBE2440B403000FF6B8 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				A4E94FBF2440B403000FF6B8 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,8 +122,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4E94FC32440B403000FF6B8 /* LaunchScreen.storyboard in Resources */,
-				A4E94FC02440B403000FF6B8 /* Preview Assets.xcassets in Resources */,
 				A4E94FBD2440B403000FF6B8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,24 +133,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4E94FCB2440D2F6000FF6B8 /* BaseTabBarController.swift in Sources */,
 				A4E94FB72440B400000FF6B8 /* AppDelegate.swift in Sources */,
 				A4E94FB92440B400000FF6B8 /* SceneDelegate.swift in Sources */,
-				A4E94FBB2440B400000FF6B8 /* ContentView.swift in Sources */,
+				A4E94FBB2440B400000FF6B8 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		A4E94FC12440B403000FF6B8 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A4E94FC22440B403000FF6B8 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A4E94FC52440B403000FF6B8 /* Debug */ = {
@@ -285,7 +262,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"AppStore/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AppStore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -304,7 +280,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"AppStore/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = AppStore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
