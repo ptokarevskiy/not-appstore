@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A48B68BA2443251800379A45 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48B68B92443251800379A45 /* VerticalStackView.swift */; };
+		A48B68BD244337E200379A45 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48B68BC244337E200379A45 /* SearchResult.swift */; };
 		A4DB57E92442275600960141 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB57E82442275600960141 /* SearchResultCell.swift */; };
-		A4DB57EC24431E8100960141 /* 05 UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB57EB24431E8100960141 /* 05 UIView+Layout.swift */; };
+		A4DB57EC24431E8100960141 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB57EB24431E8100960141 /* UIView+Layout.swift */; };
 		A4E94FB72440B400000FF6B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E94FB62440B400000FF6B8 /* AppDelegate.swift */; };
 		A4E94FB92440B400000FF6B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E94FB82440B400000FF6B8 /* SceneDelegate.swift */; };
 		A4E94FBB2440B400000FF6B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E94FBA2440B400000FF6B8 /* ViewController.swift */; };
@@ -18,8 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A48B68B92443251800379A45 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
+		A48B68BC244337E200379A45 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		A4DB57E82442275600960141 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
-		A4DB57EB24431E8100960141 /* 05 UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "05 UIView+Layout.swift"; path = "../../../../../Downloads/LBTA AppStore JSON/Section #1 - Introduction: Setting Up UI/05 UIView+Layout.swift"; sourceTree = "<group>"; };
+		A4DB57EB24431E8100960141 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Layout.swift"; path = "../../../../../Downloads/LBTA AppStore JSON/Section #1 - Introduction: Setting Up UI/UIView+Layout.swift"; sourceTree = "<group>"; };
 		A4E94FB32440B400000FF6B8 /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E94FB62440B400000FF6B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4E94FB82440B400000FF6B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A48B68BB244337D300379A45 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A48B68BC244337E200379A45 /* SearchResult.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A4DB57E72442272400960141 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -52,7 +64,8 @@
 		A4DB57EA24431E5A00960141 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A4DB57EB24431E8100960141 /* 05 UIView+Layout.swift */,
+				A4DB57EB24431E8100960141 /* UIView+Layout.swift */,
+				A48B68B92443251800379A45 /* VerticalStackView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -76,6 +89,7 @@
 		A4E94FB52440B400000FF6B8 /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
+				A48B68BB244337D300379A45 /* Model */,
 				A4DB57EA24431E5A00960141 /* Helpers */,
 				A4DB57E72442272400960141 /* Views */,
 				A4E94FCC2440DA57000FF6B8 /* Controller */,
@@ -167,10 +181,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4E94FCB2440D2F6000FF6B8 /* BaseTabBarController.swift in Sources */,
+				A48B68BD244337E200379A45 /* SearchResult.swift in Sources */,
 				A4E94FB72440B400000FF6B8 /* AppDelegate.swift in Sources */,
-				A4DB57EC24431E8100960141 /* 05 UIView+Layout.swift in Sources */,
+				A4DB57EC24431E8100960141 /* UIView+Layout.swift in Sources */,
 				A4E94FB92440B400000FF6B8 /* SceneDelegate.swift in Sources */,
 				A4E94FCE2440DAD1000FF6B8 /* AppsSearchController.swift in Sources */,
+				A48B68BA2443251800379A45 /* VerticalStackView.swift in Sources */,
 				A4DB57E92442275600960141 /* SearchResultCell.swift in Sources */,
 				A4E94FBB2440B400000FF6B8 /* ViewController.swift in Sources */,
 			);
