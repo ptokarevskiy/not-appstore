@@ -28,7 +28,7 @@ import SwiftUI
 
 struct Preview: PreviewProvider {
     static var previews: some View {
-        ContainerView()
+        ContainerView().edgesIgnoringSafeArea(.bottom)
     }
     
     struct ContainerView: UIViewControllerRepresentable {
