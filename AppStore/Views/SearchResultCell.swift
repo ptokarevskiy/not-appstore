@@ -2,12 +2,32 @@ import UIKit
 
 class SearchResultCell: UICollectionViewCell {
     
+    var appResult: Application! {
+        didSet {
+            nameLabel.text = appResult.name
+            categoryLabel.text = appResult.category
+            ratingsLabel.text = "Rating: \(String(format: "%.1f", appResult.averageUserRating ?? 0))"
+            
+            let url = URL(string: appResult.icon)
+            appIconImageView.sd_setImage(with: url)
+            
+            screenshot1ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[0]))
+            if appResult.screenshotUrls.count > 1 {
+                screenshot2ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[1]))
+            }
+            if appResult.screenshotUrls.count > 2 {
+                screenshot3ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[2]))
+            }
+        }
+    }
+    
     let appIconImageView: UIImageView = {
         let view = UIImageView()
         view.backgroundColor = .red
         view.widthAnchor.constraint(equalToConstant: 64).isActive = true
         view.heightAnchor.constraint(equalToConstant: 64).isActive = true
         view.layer.cornerRadius = 12
+        view.clipsToBounds = true
         return view
     }()
     
@@ -49,6 +69,11 @@ class SearchResultCell: UICollectionViewCell {
     func createScreenshotImageView() -> UIImageView {
         let imageView = UIImageView()
         imageView.backgroundColor = .blue
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 8
+        imageView.layer.borderWidth = 0.5
+        imageView.layer.borderColor = UIColor(white: 0.5, alpha: 1).cgColor
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }
     
@@ -75,7 +100,7 @@ class SearchResultCell: UICollectionViewCell {
         screenshotsStackView.spacing = 12
         //Default distribution = .fill 
         screenshotsStackView.distribution = .fillEqually
-    
+        
         
         let overallStackView = VerticalStackView(arrangedSubviews: [
             infoTopStackView,
