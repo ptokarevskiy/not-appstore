@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A40ADA2B2445CD4D00C74B9F /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40ADA2A2445CD4D00C74B9F /* AppGroup.swift */; };
 		A45A727D2444679C00F6DC06 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A45A727C2444679C00F6DC06 /* SDWebImage */; };
 		A45A727F24448FEA00F6DC06 /* AppsPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A727E24448FEA00F6DC06 /* AppsPageController.swift */; };
 		A45A7282244492D900F6DC06 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A7281244492D900F6DC06 /* BaseListController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A40ADA2A2445CD4D00C74B9F /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		A45A727E24448FEA00F6DC06 /* AppsPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageController.swift; sourceTree = "<group>"; };
 		A45A7281244492D900F6DC06 /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
 		A45A728524449CC900F6DC06 /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				A48B68BC244337E200379A45 /* SearchResult.swift */,
+				A40ADA2A2445CD4D00C74B9F /* AppGroup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				A4BDC9492445BBFB00D24C2A /* AppsPageHeader.swift in Sources */,
 				A4DB57E92442275600960141 /* SearchResultCell.swift in Sources */,
 				A4E016C82444AF9200E07D45 /* Extensions.swift in Sources */,
+				A40ADA2B2445CD4D00C74B9F /* AppGroup.swift in Sources */,
 				A45A7282244492D900F6DC06 /* BaseListController.swift in Sources */,
 				A4E94FBB2440B400000FF6B8 /* ViewController.swift in Sources */,
 				A45A72882444A0A700F6DC06 /* AppsHorizontalController.swift in Sources */,

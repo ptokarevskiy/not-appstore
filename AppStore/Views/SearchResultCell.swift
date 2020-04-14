@@ -1,4 +1,5 @@
 import UIKit
+import SDWebImage
 
 class SearchResultCell: UICollectionViewCell {
     

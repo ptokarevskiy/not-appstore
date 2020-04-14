@@ -13,7 +13,26 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         //1
         collectionView.register(AppsPageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
+        
+        fetchData()
     }
+    
+    var editorChoicegames: AppGroup?
+    
+    fileprivate func fetchData() {
+        print("Fetching new json data")
+        Service.shared.fetchGames { (appGroup, error) in
+            if let error = error {
+                print("Failed to fetch games:", error)
+            }
+            
+            self.editorChoicegames = appGroup
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
     //2
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath)
@@ -25,11 +44,15 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AppsGroupCell
+        cell.titleLabel.text = editorChoicegames?.feed.title
+        cell.horizontalController.appGroup = editorChoicegames
+        //Every time appgroup set you need to reloadData
+        cell.horizontalController.collectionView.reloadData()
         return cell
     }
     
