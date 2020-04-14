@@ -6,9 +6,9 @@ class BaseTabBarController: UITabBarController {
         super.viewDidLoad()
         
         viewControllers = [
-             createNavController(viewController: AppsSearchController(), title: "Search", imageName: "search"),
+            createNavController(viewController: AppsPageController(), title: "Apps", imageName: "apps"),
             createNavController(viewController: UIViewController(), title: "Today", imageName: "today"),
-            createNavController(viewController: UIViewController(), title: "Apps", imageName: "apps")
+            createNavController(viewController: AppsSearchController(), title: "Search", imageName: "search")
         ]
     }
     
@@ -25,7 +25,6 @@ class BaseTabBarController: UITabBarController {
 
 
 import SwiftUI
-
 struct Preview: PreviewProvider {
     static var previews: some View {
         ContainerView().edgesIgnoringSafeArea(.bottom)

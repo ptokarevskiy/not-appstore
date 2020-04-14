@@ -5,8 +5,9 @@ class Service {
     //Singleton
     static let shared = Service()
     
-    func fetchApps(completion: @escaping ([Application], Error?) -> ()) {
-        let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
+    func fetchApps(searchTerm: String, completion: @escaping ([Application], Error?) -> ()) {
+        let urlEncodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let urlString = "https://itunes.apple.com/search?term=\(urlEncodedSearchTerm)&entity=software"
         guard let url = URL(string: urlString) else { return }
         //fetch data
         URLSession.shared.dataTask(with: url) { (data, response, error) in
