@@ -52,7 +52,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         }
         
         dispatchGroup.enter()
-        Service.shared.fetchAppGroup(urlSrting: "https://rss.itunes.apple.com/api/v1/us/ios-apps/top-free/all/50/explicit.json") { (appGroup, error) in
+        Service.shared.fetchAppGroup(urlString: "https://rss.itunes.apple.com/api/v1/us/ios-apps/top-free/all/50/explicit.json") { (appGroup, error) in
             dispatchGroup.leave()
             if let group = appGroup {
                 self.groups.append(group)
@@ -100,6 +100,11 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         cell.horizontalController.appGroup = appGroup
         //Every time appgroup set you need to reloadData
         cell.horizontalController.collectionView.reloadData()
+        cell.horizontalController.didSelectHandler = { [weak self] feedResult in
+            let controller = AppDetailController()
+            controller.navigationItem.title = feedResult.name
+            self?.navigationController?.pushViewController(controller, animated: true)
+        }
         return cell
     }
     

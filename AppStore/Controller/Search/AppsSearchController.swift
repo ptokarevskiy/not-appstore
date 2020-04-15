@@ -33,7 +33,7 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
                 print("Failed to fetch apps:", error)
                 return
             }
-            self.appResults = results
+            self.appResults = results?.results ?? []
             // By default URLSessions do execute their data tasks on a background thread. Because of this, we are required to get back on the main thread by using DispatchQueue.main.async
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -62,7 +62,7 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
             //actually fires network request
             Service.shared.fetchApps(searchTerm: searchText) { (result, error) in
-                self.appResults = result
+                self.appResults = result?.results ?? []
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
