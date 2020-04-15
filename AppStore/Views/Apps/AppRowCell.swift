@@ -1,7 +1,7 @@
 import UIKit
 
 class AppRowCell: UICollectionViewCell {
-    let imageView = UIImageView(cornerRadius: 8)
+    let imageView = UIImageView(cornerRadius: 12)
     let nameLabel = UILabel(text: "App Name", font: .systemFont(ofSize: 20))
     let companyLabel = UILabel(text: "Company Name", font: .systemFont(ofSize: 13))
     let getButton = UIButton(title: "GET")
@@ -9,11 +9,11 @@ class AppRowCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        imageView.backgroundColor = .green
+        imageView.layer.borderColor = UIColor.systemGray3.cgColor
         //        imageView.widthAnchor.constraint(equalToConstant: 64).isActive = true
         imageView.constrainWidth(constant: 64)
         imageView.constrainHeight(constant: 64)
-        getButton.backgroundColor = UIColor(white: 0.95, alpha: 1)
+        getButton.backgroundColor = .systemGray6
         getButton.constrainWidth(constant: 80)
         getButton.constrainHeight(constant: 32)
         getButton.titleLabel?.font = .boldSystemFont(ofSize: 16)
@@ -42,7 +42,7 @@ class AppRowCell: UICollectionViewCell {
 import SwiftUI
 struct AppRowCellPreview: PreviewProvider {
     static var previews: some View {
-        return ContainerView()
+        return ContainerView().previewLayout(.fixed(width: 300, height: 50))
     }
     struct ContainerView: UIViewRepresentable {
         func makeUIView(context: Context) -> UIView {

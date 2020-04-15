@@ -5,37 +5,83 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     fileprivate let reuseIdentifier = "id"
     fileprivate let headerIdentifier = "headerId"
     
+    let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.color = .label
+        indicator.startAnimating()
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground
         
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         //1
         collectionView.register(AppsPageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
-        
+        view.addSubview(activityIndicator)
+        activityIndicator.fillSuperview()
+        activityIndicator.startAnimating()
         fetchData()
     }
     
-    var editorChoicegames: AppGroup?
+    var groups = [AppGroup]()
+    var socialApps = [SocialApp]()
     
     fileprivate func fetchData() {
-        print("Fetching new json data")
+        
+        //sync data fetches together
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
         Service.shared.fetchGames { (appGroup, error) in
+            dispatchGroup.leave()
+            if let group = appGroup {
+                self.groups.append(group)
+            }
+        }
+        
+        dispatchGroup.enter()
+        Service.shared.fetchTopGrossing { (appGroup, error) in
+            dispatchGroup.leave()
+            if let group = appGroup {
+                self.groups.append(group)
+            }
+        }
+        
+        dispatchGroup.enter()
+        Service.shared.fetchAppGroup(urlSrting: "https://rss.itunes.apple.com/api/v1/us/ios-apps/top-free/all/50/explicit.json") { (appGroup, error) in
+            dispatchGroup.leave()
+            if let group = appGroup {
+                self.groups.append(group)
+            }
+        }
+        
+        dispatchGroup.enter()
+        Service.shared.fetchSocialApps { (apps, error) in
+            dispatchGroup.leave()
             if let error = error {
-                print("Failed to fetch games:", error)
+                print("Error fetching social apps:", error)
+                return
             }
-            
-            self.editorChoicegames = appGroup
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
+            guard let apps = apps else { return }
+            self.socialApps = apps
+        }
+        
+        //completion
+        dispatchGroup.notify(queue: .main) {
+            self.collectionView.reloadData()
+            self.activityIndicator.stopAnimating()
         }
     }
     
     //2
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! AppsPageHeader
+        header.appHeaderHorizontalController.socialApps = self.socialApps
+        header.appHeaderHorizontalController.collectionView.reloadData()
         return header
     }
     //3
@@ -44,13 +90,14 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return groups.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AppsGroupCell
-        cell.titleLabel.text = editorChoicegames?.feed.title
-        cell.horizontalController.appGroup = editorChoicegames
+        let appGroup = groups[indexPath.item]
+        cell.titleLabel.text = appGroup.feed.title
+        cell.horizontalController.appGroup = appGroup
         //Every time appgroup set you need to reloadData
         cell.horizontalController.collectionView.reloadData()
         return cell

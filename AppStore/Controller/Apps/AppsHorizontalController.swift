@@ -9,7 +9,7 @@ class AppsHorizontalController: BaseListController, UICollectionViewDelegateFlow
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground
         collectionView.showsHorizontalScrollIndicator = false
         
         collectionView.register(AppRowCell.self, forCellWithReuseIdentifier: reuseIdentifier)

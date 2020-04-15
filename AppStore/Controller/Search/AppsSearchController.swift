@@ -16,7 +16,7 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemBackground
         
         //UICollectionViewCell.self - register class itself insted of instance
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellId)

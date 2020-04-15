@@ -10,8 +10,9 @@ class AppsHeaderCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        companyLabel.textColor = .blue
-        imageView.backgroundColor = .red
+        companyLabel.textColor = .link
+        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .separator
         titleLabel.numberOfLines = 2
         
         let stackView = VerticalStackView(arrangedSubviews: [
@@ -21,6 +22,7 @@ class AppsHeaderCell: UICollectionViewCell {
         ], spacing: 12)
         addSubview(stackView)
         stackView.fillSuperview(padding: .init(top: 16, left: 0, bottom: 0, right: 0))
+        
     }
     
     required init?(coder: NSCoder) {
@@ -32,7 +34,7 @@ class AppsHeaderCell: UICollectionViewCell {
 import SwiftUI
 struct AppsHeaderCellPreview: PreviewProvider {
     static var previews: some View {
-        return ContentView().previewLayout(.fixed(width: 400, height: 300))
+            ContentView().previewLayout(.fixed(width: 400, height: 300))
     }
     struct ContentView: UIViewRepresentable {
         func makeUIView(context: Context) -> UIView {
