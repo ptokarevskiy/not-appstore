@@ -12,12 +12,15 @@ struct Application: Decodable {
     var averageUserRating: Float?
     let icon: String
     let screenshotUrls: [String]
+    let formattedPrice: String
+    let description: String
+    let releaseNotes: String
     
     
     enum CodingKeys: String, CodingKey {
         case name = "trackName"
         case category = "primaryGenreName"
         case icon = "artworkUrl100"
-        case screenshotUrls, averageUserRating
+        case screenshotUrls, averageUserRating, formattedPrice, description, releaseNotes
     }
 }
