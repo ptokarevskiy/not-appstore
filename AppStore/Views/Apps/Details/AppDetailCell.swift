@@ -2,6 +2,15 @@ import UIKit
 
 class AppDetailCell: UICollectionViewCell {
     
+    var app: Application! {
+        didSet {
+            appIconImageView.sd_setImage(with: URL(string: app?.icon ?? ""))
+            nameLabel.text = app?.name
+            releaseNotesLabel.text = app?.releaseNotes
+            priceButton.setTitle(app?.formattedPrice, for: .normal)
+        }
+    }
+    
     let appIconImageView = UIImageView(cornerRadius: 16)
     let nameLabel = UILabel(text: "AppName", font: .boldSystemFont(ofSize: 24), numberOfLines: 2)
     let priceButton = UIButton(title: "$4.99")
@@ -48,7 +57,7 @@ class AppDetailCell: UICollectionViewCell {
 import SwiftUI
 struct AppDetailCellPreview: PreviewProvider {
     static var previews: some View {
-        return ContainerView().previewLayout(.fixed(width: 400, height: 600))
+        return ContainerView().previewLayout(.fixed(width: 400, height: 300))
     }
     
     struct ContainerView: UIViewRepresentable {

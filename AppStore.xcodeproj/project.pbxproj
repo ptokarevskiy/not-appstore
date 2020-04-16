@@ -18,6 +18,8 @@
 		A45A7282244492D900F6DC06 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A7281244492D900F6DC06 /* BaseListController.swift */; };
 		A45A728624449CC900F6DC06 /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A728524449CC900F6DC06 /* AppsGroupCell.swift */; };
 		A45A72882444A0A700F6DC06 /* AppsHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A72872444A0A700F6DC06 /* AppsHorizontalController.swift */; };
+		A45C72E92448925E00A6A769 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C72E82448925E00A6A769 /* PreviewCell.swift */; };
+		A45C72EB244894D400A6A769 /* PreviewScreenshotsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C72EA244894D400A6A769 /* PreviewScreenshotsController.swift */; };
 		A48B68BA2443251800379A45 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48B68B92443251800379A45 /* VerticalStackView.swift */; };
 		A48B68BD244337E200379A45 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48B68BC244337E200379A45 /* SearchResult.swift */; };
 		A48B68C0244341F000379A45 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48B68BF244341F000379A45 /* Service.swift */; };
@@ -47,6 +49,8 @@
 		A45A7281244492D900F6DC06 /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
 		A45A728524449CC900F6DC06 /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
 		A45A72872444A0A700F6DC06 /* AppsHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHorizontalController.swift; sourceTree = "<group>"; };
+		A45C72E82448925E00A6A769 /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
+		A45C72EA244894D400A6A769 /* PreviewScreenshotsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewScreenshotsController.swift; sourceTree = "<group>"; };
 		A48B68B92443251800379A45 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		A48B68BC244337E200379A45 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		A48B68BF244341F000379A45 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				A40ADA332447222D00C74B9F /* AppDetailController.swift */,
+				A45C72EA244894D400A6A769 /* PreviewScreenshotsController.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -91,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				A40ADA3624472A1200C74B9F /* AppDetailCell.swift */,
+				A45C72E82448925E00A6A769 /* PreviewCell.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -288,6 +294,7 @@
 				A40ADA2D2445FAF400C74B9F /* SocialApp.swift in Sources */,
 				A45A727F24448FEA00F6DC06 /* AppsPageController.swift in Sources */,
 				A48B68BD244337E200379A45 /* SearchResult.swift in Sources */,
+				A45C72EB244894D400A6A769 /* PreviewScreenshotsController.swift in Sources */,
 				A4E94FB72440B400000FF6B8 /* AppDelegate.swift in Sources */,
 				A4BDC94B2445BC1300D24C2A /* AppsHeaderCell.swift in Sources */,
 				A4DB57EC24431E8100960141 /* UIView+Layout.swift in Sources */,
@@ -306,6 +313,7 @@
 				A40ADA2B2445CD4D00C74B9F /* AppGroup.swift in Sources */,
 				A40ADA3724472A1200C74B9F /* AppDetailCell.swift in Sources */,
 				A45A7282244492D900F6DC06 /* BaseListController.swift in Sources */,
+				A45C72E92448925E00A6A769 /* PreviewCell.swift in Sources */,
 				A4E94FBB2440B400000FF6B8 /* ViewController.swift in Sources */,
 				A45A72882444A0A700F6DC06 /* AppsHorizontalController.swift in Sources */,
 				A4E016C62444AE7F00E07D45 /* AppRowCell.swift in Sources */,
