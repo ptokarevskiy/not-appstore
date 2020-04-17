@@ -8,31 +8,21 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
     var app: Application?
     var reviews: Reviews?
     
-    var appId: String! {
-        didSet {
-            print(appId!)
-            let urlString = "http://itunes.apple.com/lookup?id=\(appId ?? "")"
-            Service.shared.fetchGenericJSONData(urlString: urlString) { (result: SearchResult?, error) in
-                let app = result?.results.first
-                self.app = app
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            }
-            let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appId ?? "")/sortby=mostrecent/json?l=en&cc=us"
-            print(reviewsUrl)
-            Service.shared.fetchGenericJSONData(urlString: reviewsUrl) { (reviews: Reviews?, error) in
-                if let error = error {
-                    print("Failed to decode reviews:", error)
-                }
-//                reviews?.feed.entry.forEach { print($0.title, $0.content, $0.author.name.label) }
-                self.reviews = reviews
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            }
-        }
+    fileprivate let appId: String
+    
+    // dependency injection constructor
+    init(appId: String) {
+        self.appId = appId
+        super.init()
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // dependency
+//    var appId: String! {
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +32,31 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
         collectionView.register(PreviewCell.self, forCellWithReuseIdentifier: previewCellId)
         collectionView.register(ReviewRowCell.self, forCellWithReuseIdentifier: reviewsCellId)
         navigationItem.largeTitleDisplayMode = .never
+        fetchData()
+    }
+    
+    fileprivate func fetchData() {
+        
+        let urlString = "http://itunes.apple.com/lookup?id=\(appId)"
+        Service.shared.fetchGenericJSONData(urlString: urlString) { (result: SearchResult?, error) in
+            let app = result?.results.first
+            self.app = app
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appId)/sortby=mostrecent/json?l=en&cc=us"
+        print(reviewsUrl)
+        Service.shared.fetchGenericJSONData(urlString: reviewsUrl) { (reviews: Reviews?, error) in
+            if let error = error {
+                print("Failed to decode reviews:", error)
+            }
+            // reviews?.feed.entry.forEach { print($0.title, $0.content, $0.author.name.label) }
+            self.reviews = reviews
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -82,6 +97,10 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
             return .init(width: view.frame.width, height: 280)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .init(top: 0, left: 0, bottom: 16, right: 0)
+    }
 }
 
 
@@ -94,7 +113,7 @@ struct AppDetailControllerPreview: PreviewProvider {
     }
     struct ContainerView: UIViewControllerRepresentable{
         func makeUIViewController(context: Context) -> UIViewController {
-            return AppDetailController()
+            return AppDetailController(appId: "1287138671")
         }
         func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
             

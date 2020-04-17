@@ -3,8 +3,20 @@ import UIKit
 class ReviewCell: UICollectionViewCell {
     let titleLabel = UILabel(text: "Review Title", font: .boldSystemFont(ofSize: 18))
     let authorLabel = UILabel(text: "Nickname", font: .systemFont(ofSize: 16))
-    let starsLabel = UILabel(text: "Stars", font: .systemFont(ofSize: 14))
-    let bodyLabel = UILabel(text: "Review body \nReview body \nReview body \n", font: .systemFont(ofSize: 16), numberOfLines: 0)
+//    let starsLabel = UILabel(text: "Stars", font: .systemFont(ofSize: 14))
+    let starsStackView: UIStackView = {
+        var arrangedSubviews = [UIView]()
+        (0..<5).forEach { (_) in
+            let imageView = UIImageView(image: UIImage(named: "star"))
+            imageView.constrainWidth(constant: 20)
+            imageView.constrainHeight(constant: 20)
+            arrangedSubviews.append(imageView)
+        }
+        arrangedSubviews.append(UIView())
+        let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
+        return stackView
+    }()
+    let bodyLabel = UILabel(text: "Review body \nReview body \nReview body \n", font: .systemFont(ofSize: 14), numberOfLines: 5)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,7 +30,7 @@ class ReviewCell: UICollectionViewCell {
 //            UIView(),
             authorLabel
         ], customSpacing: 8),
-                                                             starsLabel,
+                                                             starsStackView,
                                                              bodyLabel, UIView()],
                                           spacing: 12)
         titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)

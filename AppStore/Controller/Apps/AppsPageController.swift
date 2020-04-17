@@ -101,8 +101,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         //Every time appgroup set you need to reloadData
         cell.horizontalController.collectionView.reloadData()
         cell.horizontalController.didSelectHandler = { [weak self] feedResult in
-            let controller = AppDetailController()
-            controller.appId = feedResult.id
+            let controller = AppDetailController(appId: feedResult.id)
             controller.navigationItem.title = feedResult.name
             self?.navigationController?.pushViewController(controller, animated: true)
         }

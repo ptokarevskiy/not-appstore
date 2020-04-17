@@ -62,6 +62,10 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
             //actually fires network request
             Service.shared.fetchApps(searchTerm: searchText) { (result, error) in
+                if let error = error {
+                    print("Failed to fetch apps:", error)
+                }
+                
                 self.appResults = result?.results ?? []
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
@@ -86,6 +90,12 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
         //Apple recommends use "item" for collectionViews and "row" for tableViews
         cell.appResult = appResults[indexPath.item]
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let appId = String(appResults[indexPath.item].id)
+        let appDetailController = AppDetailController(appId: appId)
+        navigationController?.pushViewController(appDetailController, animated: true)
     }
 }
 

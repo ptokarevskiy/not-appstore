@@ -21,7 +21,7 @@ class AppDetailCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        appIconImageView.backgroundColor = .systemRed
+        appIconImageView.backgroundColor = .systemGray6
         appIconImageView.constrainWidth(constant: 140)
         appIconImageView.constrainHeight(constant: 140)
         
@@ -29,7 +29,7 @@ class AppDetailCell: UICollectionViewCell {
         priceButton.constrainWidth(constant: 80)
         priceButton.layer.cornerRadius = 32 / 2
         priceButton.titleLabel?.font = .boldSystemFont(ofSize: 16)
-        priceButton.setTitleColor(.systemGray6, for: .normal)
+        priceButton.setTitleColor(.white, for: .normal)
         
         let stackView = VerticalStackView(arrangedSubviews: [
             UIStackView(arrangedSubviews: [
