@@ -32,6 +32,8 @@ class Service {
         fetchGenericJSONData(urlString: urlString, completion: completion)
     }
     
+    //let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appId ?? "")/sortby=mostrecent/json?l=en&cc=us"
+    
     func fetchGenericJSONData<T:Decodable>(urlString: String, completion: @escaping (T?, Error?) -> ()) {
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in

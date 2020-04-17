@@ -20,6 +20,9 @@
 		A45A72882444A0A700F6DC06 /* AppsHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45A72872444A0A700F6DC06 /* AppsHorizontalController.swift */; };
 		A45C72E92448925E00A6A769 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C72E82448925E00A6A769 /* PreviewCell.swift */; };
 		A45C72EB244894D400A6A769 /* PreviewScreenshotsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C72EA244894D400A6A769 /* PreviewScreenshotsController.swift */; };
+		A45C72ED2448BB4000A6A769 /* ReviewRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C72EC2448BB4000A6A769 /* ReviewRowCell.swift */; };
+		A45C72EF2448BE7500A6A769 /* ReviewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C72EE2448BE7500A6A769 /* ReviewsController.swift */; };
+		A45C72F12448C02F00A6A769 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C72F02448C02F00A6A769 /* ReviewCell.swift */; };
 		A48B68BA2443251800379A45 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48B68B92443251800379A45 /* VerticalStackView.swift */; };
 		A48B68BD244337E200379A45 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48B68BC244337E200379A45 /* SearchResult.swift */; };
 		A48B68C0244341F000379A45 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48B68BF244341F000379A45 /* Service.swift */; };
@@ -30,6 +33,7 @@
 		A4DB57EC24431E8100960141 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB57EB24431E8100960141 /* UIView+Layout.swift */; };
 		A4E016C62444AE7F00E07D45 /* AppRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E016C52444AE7F00E07D45 /* AppRowCell.swift */; };
 		A4E016C82444AF9200E07D45 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E016C72444AF9200E07D45 /* Extensions.swift */; };
+		A4E4E45E2449A7F100234FF4 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E4E45D2449A7F100234FF4 /* Reviews.swift */; };
 		A4E94FB72440B400000FF6B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E94FB62440B400000FF6B8 /* AppDelegate.swift */; };
 		A4E94FB92440B400000FF6B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E94FB82440B400000FF6B8 /* SceneDelegate.swift */; };
 		A4E94FBB2440B400000FF6B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E94FBA2440B400000FF6B8 /* ViewController.swift */; };
@@ -51,6 +55,9 @@
 		A45A72872444A0A700F6DC06 /* AppsHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHorizontalController.swift; sourceTree = "<group>"; };
 		A45C72E82448925E00A6A769 /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
 		A45C72EA244894D400A6A769 /* PreviewScreenshotsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewScreenshotsController.swift; sourceTree = "<group>"; };
+		A45C72EC2448BB4000A6A769 /* ReviewRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRowCell.swift; sourceTree = "<group>"; };
+		A45C72EE2448BE7500A6A769 /* ReviewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsController.swift; sourceTree = "<group>"; };
+		A45C72F02448C02F00A6A769 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		A48B68B92443251800379A45 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		A48B68BC244337E200379A45 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		A48B68BF244341F000379A45 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -61,6 +68,7 @@
 		A4DB57EB24431E8100960141 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Layout.swift"; path = "../../../../../Downloads/LBTA AppStore JSON/Section #1 - Introduction: Setting Up UI/UIView+Layout.swift"; sourceTree = "<group>"; };
 		A4E016C52444AE7F00E07D45 /* AppRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRowCell.swift; sourceTree = "<group>"; };
 		A4E016C72444AF9200E07D45 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A4E4E45D2449A7F100234FF4 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		A4E94FB32440B400000FF6B8 /* NotAppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotAppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E94FB62440B400000FF6B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4E94FB82440B400000FF6B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +96,7 @@
 			children = (
 				A40ADA332447222D00C74B9F /* AppDetailController.swift */,
 				A45C72EA244894D400A6A769 /* PreviewScreenshotsController.swift */,
+				A45C72EE2448BE7500A6A769 /* ReviewsController.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -97,6 +106,8 @@
 			children = (
 				A40ADA3624472A1200C74B9F /* AppDetailCell.swift */,
 				A45C72E82448925E00A6A769 /* PreviewCell.swift */,
+				A45C72EC2448BB4000A6A769 /* ReviewRowCell.swift */,
+				A45C72F02448C02F00A6A769 /* ReviewCell.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -138,6 +149,7 @@
 				A48B68BC244337E200379A45 /* SearchResult.swift */,
 				A40ADA2A2445CD4D00C74B9F /* AppGroup.swift */,
 				A40ADA2C2445FAF400C74B9F /* SocialApp.swift */,
+				A4E4E45D2449A7F100234FF4 /* Reviews.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4E94FCB2440D2F6000FF6B8 /* BaseTabBarController.swift in Sources */,
+				A45C72F12448C02F00A6A769 /* ReviewCell.swift in Sources */,
 				A40ADA2D2445FAF400C74B9F /* SocialApp.swift in Sources */,
 				A45A727F24448FEA00F6DC06 /* AppsPageController.swift in Sources */,
 				A48B68BD244337E200379A45 /* SearchResult.swift in Sources */,
@@ -308,12 +321,15 @@
 				A4BDC94D2445BC8800D24C2A /* AppsHeaderHorizontalController.swift in Sources */,
 				A48B68C0244341F000379A45 /* Service.swift in Sources */,
 				A4BDC9492445BBFB00D24C2A /* AppsPageHeader.swift in Sources */,
+				A45C72EF2448BE7500A6A769 /* ReviewsController.swift in Sources */,
 				A4DB57E92442275600960141 /* SearchResultCell.swift in Sources */,
 				A4E016C82444AF9200E07D45 /* Extensions.swift in Sources */,
 				A40ADA2B2445CD4D00C74B9F /* AppGroup.swift in Sources */,
+				A4E4E45E2449A7F100234FF4 /* Reviews.swift in Sources */,
 				A40ADA3724472A1200C74B9F /* AppDetailCell.swift in Sources */,
 				A45A7282244492D900F6DC06 /* BaseListController.swift in Sources */,
 				A45C72E92448925E00A6A769 /* PreviewCell.swift in Sources */,
+				A45C72ED2448BB4000A6A769 /* ReviewRowCell.swift in Sources */,
 				A4E94FBB2440B400000FF6B8 /* ViewController.swift in Sources */,
 				A45A72882444A0A700F6DC06 /* AppsHorizontalController.swift in Sources */,
 				A4E016C62444AE7F00E07D45 /* AppRowCell.swift in Sources */,
