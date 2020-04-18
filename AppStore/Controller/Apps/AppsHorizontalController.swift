@@ -5,13 +5,6 @@ class AppsHorizontalController: HorizontalSnappingController, UICollectionViewDe
     fileprivate let reuseIdentifier = "horizontalId"
     
     var appGroup: AppGroup?
-    var didSelectHandler: ((FeedResult) -> ())?
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let app = appGroup?.feed.results[indexPath.item] {
-            didSelectHandler?(app)
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
