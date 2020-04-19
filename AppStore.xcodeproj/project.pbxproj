@@ -23,6 +23,7 @@
 		A45C72ED2448BB4000A6A769 /* ReviewRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C72EC2448BB4000A6A769 /* ReviewRowCell.swift */; };
 		A45C72EF2448BE7500A6A769 /* ReviewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C72EE2448BE7500A6A769 /* ReviewsController.swift */; };
 		A45C72F12448C02F00A6A769 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45C72F02448C02F00A6A769 /* ReviewCell.swift */; };
+		A47CC89A244C6EDF0058F66F /* TodayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47CC899244C6EDF0058F66F /* TodayItem.swift */; };
 		A48B68BA2443251800379A45 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48B68B92443251800379A45 /* VerticalStackView.swift */; };
 		A48B68BD244337E200379A45 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48B68BC244337E200379A45 /* SearchResult.swift */; };
 		A48B68C0244341F000379A45 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48B68BF244341F000379A45 /* Service.swift */; };
@@ -63,6 +64,7 @@
 		A45C72EC2448BB4000A6A769 /* ReviewRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRowCell.swift; sourceTree = "<group>"; };
 		A45C72EE2448BE7500A6A769 /* ReviewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsController.swift; sourceTree = "<group>"; };
 		A45C72F02448C02F00A6A769 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		A47CC899244C6EDF0058F66F /* TodayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayItem.swift; sourceTree = "<group>"; };
 		A48B68B92443251800379A45 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		A48B68BC244337E200379A45 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		A48B68BF244341F000379A45 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				A40ADA2A2445CD4D00C74B9F /* AppGroup.swift */,
 				A40ADA2C2445FAF400C74B9F /* SocialApp.swift */,
 				A4E4E45D2449A7F100234FF4 /* Reviews.swift */,
+				A47CC899244C6EDF0058F66F /* TodayItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				A4E94FB92440B400000FF6B8 /* SceneDelegate.swift in Sources */,
 				A45A728624449CC900F6DC06 /* AppsGroupCell.swift in Sources */,
 				A40ADA2F24470FA100C74B9F /* HorizontalSnappingController.swift in Sources */,
+				A47CC89A244C6EDF0058F66F /* TodayItem.swift in Sources */,
 				A40ADA312447182A00C74B9F /* BetterSnappingLayout.swift in Sources */,
 				A4E94FCE2440DAD1000FF6B8 /* AppsSearchController.swift in Sources */,
 				A4B8568A244AFF7800A28516 /* AppFullscreenController.swift in Sources */,

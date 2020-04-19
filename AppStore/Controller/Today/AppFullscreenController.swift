@@ -1,6 +1,9 @@
 import UIKit
 
 class AppFullscreenController: UITableViewController {
+    var dismissHandler: (() ->())?
+    var todayItem: TodayItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,11 +25,18 @@ class AppFullscreenController: UITableViewController {
             //           cell.addSubview(todayCell)
             //           todayCell.centerInSuperview(size: .init(width: 250, height: 250))
             let cell = AppFullscreenHeaderCell()
+            cell.closeButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
+            cell.todayCell.todayItem = todayItem
             return cell
         }
         
         let cell = AppFullscreenDescriptionCell()
         return cell
+    }
+    
+    @objc fileprivate func handleDismiss(button: UIButton) {
+        button.isHidden = true
+        dismissHandler?()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
