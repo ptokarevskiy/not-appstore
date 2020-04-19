@@ -2,7 +2,7 @@ import UIKit
 
 class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     let cellId = "cellId"
-    var appFullscreenController: UIViewController!
+    var appFullscreenController: AppFullscreenController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,11 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         return .init(top: 32, left: 0, bottom: 32, right: 0)
     }
     
+    var topConstraint: NSLayoutConstraint?
+    var leadingConstraint: NSLayoutConstraint?
+    var widthConstraint: NSLayoutConstraint?
+    var heightConstraint: NSLayoutConstraint?
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let redView = UIView()
 //        redView.backgroundColor = .red
@@ -50,16 +55,29 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         guard let startingframe = cell.superview?.convert(cell.frame, to: nil) else { return }
         
         self.startingFrame = startingframe
-        redView.frame = startingframe
-        // why i don't use a transition delegate?
+        //Autolayout constraint animations
+        //4 anchors
+        redView.translatesAutoresizingMaskIntoConstraints = false
+        topConstraint = redView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingframe.origin.y)
+        leadingConstraint = redView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: startingframe.origin.x)
+        widthConstraint = redView.widthAnchor.constraint(equalToConstant: startingframe.width)
+        heightConstraint = redView.heightAnchor.constraint(equalToConstant: startingframe.height)
         
-        // we're using frames for animation
-        // frames aren't reliable enough for animations
+        [topConstraint, leadingConstraint, heightConstraint, widthConstraint].forEach {$0?.isActive = true }
+        self.view.layoutIfNeeded()
         
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-            redView.frame = self.view.frame
             
-            self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
+            self.topConstraint?.constant = 0
+            self.leadingConstraint?.constant = 0
+            self.widthConstraint?.constant = self.view.frame.width
+            self.heightConstraint?.constant = self.view.frame.height
+            //starts animation
+            self.view.layoutIfNeeded()
+
+            //doesnt work anymore
+//            self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
+            self.tabBarController?.setTabBar(hidden: true)
         }, completion: nil)
     }
     
@@ -70,9 +88,17 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         //access starting frame
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             if let startingFrame = self.startingFrame {
-                gesture.view?.frame = startingFrame
                 
-                self.tabBarController?.tabBar.transform = .identity
+                self.topConstraint?.constant = startingFrame.origin.y
+                self.leadingConstraint?.constant = startingFrame.origin.x
+                self.widthConstraint?.constant = startingFrame.width
+                self.heightConstraint?.constant = startingFrame.height
+                //starts animation
+                self.tabBarController?.setTabBar(hidden: false, animated: false)
+                self.view.layoutIfNeeded()
+                
+                self.appFullscreenController.tableView.scrollToRow(at: [0,0], at: .top, animated: true)
+                
             }
         }) { _ in
             gesture.view?.removeFromSuperview()

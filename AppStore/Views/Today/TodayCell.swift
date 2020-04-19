@@ -6,7 +6,7 @@ class TodayCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        backgroundColor = .white
+        backgroundColor = .tertiarySystemBackground
         layer.cornerRadius = 16
         addSubview(imageView)
         imageView.contentMode = .scaleAspectFit
