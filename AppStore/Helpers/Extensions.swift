@@ -80,7 +80,7 @@ extension UITabBarController {
                 }
             }
         } else {
-            UIView.animate(withDuration: 0.3, animations: { tabBarRef?.frame = endFrame }) { didFinish in
+            UIView.animate(withDuration: 0.2, animations: { tabBarRef?.frame = endFrame }) { didFinish in
                 if !hidden, didFinish, let insets = newInsets {
                     set(childViewController: vc, additionalSafeArea: insets)
                 }
