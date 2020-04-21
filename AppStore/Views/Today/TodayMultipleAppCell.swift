@@ -7,14 +7,14 @@ class TodayMultipleAppCell: BaseTodayCell {
             titleLabel.text = todayItem.title
             backgroundColor = todayItem.backgroundColor
             
-            multipleAppController.results = todayItem.apps
+            multipleAppController.apps = todayItem.apps
             multipleAppController.collectionView.reloadData()
         }
     }
     
     let categoryLabel = UILabel(text: "Life Hack", font: .boldSystemFont(ofSize: 20))
     let titleLabel = UILabel(text: "What we're \nplaying now", font: .boldSystemFont(ofSize: 28), numberOfLines: 2)
-    let multipleAppController = TodayMultipleAppsController()
+    let multipleAppController = TodayMultipleAppsController(mode: .small)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

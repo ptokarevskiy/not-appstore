@@ -20,6 +20,12 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         return aiv
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        tabBarController?.tabBar.superview?.setNeedsLayout()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(activityIndicatorView)
@@ -82,9 +88,10 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             self.activityIndicatorView.stopAnimating()
             
             self.items = [
-                TodayItem.init(category: "Daily list", title: topGrossingGroup?.feed.title ?? "", image: UIImage(named: "garden")!, description: "", backgroundColor: .secondarySystemBackground, cellType: .multiple, apps: topGrossingGroup?.feed.results ?? []),
-                TodayItem.init(category: "Daily list", title: gamesGroup?.feed.title ?? "", image: UIImage(named: "garden")!, description: "", backgroundColor: .secondarySystemBackground, cellType: .multiple, apps: gamesGroup?.feed.results ?? []),
-                TodayItem.init(category: "Life Hack", title: "Utilizing your time", image: UIImage(named: "garden")!, description: "All the tools and apps you need to intelligently organize your life the right way", backgroundColor: .secondarySystemBackground, cellType: .single, apps: [])
+                TodayItem.init(category: "Daily list", title: topGrossingGroup?.feed.title ?? "", image: UIImage(named: "garden")!, description: "", backgroundColor: .secondarySystemBackground, labelColor: .label, cellType: .multiple, apps: topGrossingGroup?.feed.results ?? []),
+                TodayItem.init(category: "Daily list", title: gamesGroup?.feed.title ?? "", image: UIImage(named: "garden")!, description: "", backgroundColor: .secondarySystemBackground, labelColor: .label, cellType: .multiple, apps: gamesGroup?.feed.results ?? []),
+                TodayItem.init(category: "Holidays", title: "Travel on a Budget", image: UIImage(named: "holiday")!, description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9838892817, green: 0.9626765847, blue: 0.7271130681, alpha: 1), labelColor: .black, cellType: .single, apps: []),
+                TodayItem.init(category: "Life Hack", title: "Utilizing your time", image: UIImage(named: "garden")!, description: "All the tools and apps you need to intelligently organize your life the right way", backgroundColor: .white, labelColor: .black, cellType: .single, apps: [])
             ]
             
             self.collectionView.reloadData()
@@ -116,6 +123,21 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     var heightConstraint: NSLayoutConstraint?
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        if items[indexPath.item].cellType == .multiple {
+//            let fullController = TodayMultipleAppsController(mode: .fullscreen)
+//            fullController.apps = self.items[indexPath.item].apps
+//            present(BackEnabledNavigationController(rootViewController: fullController), animated: true)
+//            return
+//        }
+        if items[indexPath.item].cellType == .multiple {
+          let appFullscreenController = TodayMultipleAppsController(mode: .fullscreen)
+          let fullscreenNavigationController = BackEnabledNavigationController(rootViewController: appFullscreenController)
+          appFullscreenController.apps = items[indexPath.item].apps
+          fullscreenNavigationController.modalPresentationStyle = .fullScreen
+          navigationController?.present(fullscreenNavigationController, animated: true)
+            return
+        }
+        
         let appFullscreenController = AppFullscreenController()
         appFullscreenController.todayItem = items[indexPath.item]
         appFullscreenController.dismissHandler = {

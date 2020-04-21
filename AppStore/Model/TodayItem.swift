@@ -7,6 +7,7 @@ struct TodayItem {
     let image: UIImage
     let description: String
     let backgroundColor: UIColor
+    let labelColor: UIColor
     
     let cellType: CellType
     

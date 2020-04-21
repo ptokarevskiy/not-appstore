@@ -4,9 +4,12 @@ class TodayCell: BaseTodayCell {
     override var todayItem: TodayItem! {
         didSet {
             categoryLabel.text = todayItem.category.uppercased()
+            categoryLabel.textColor = todayItem.labelColor
             titleLabel.text = todayItem.title
+            titleLabel.textColor = todayItem.labelColor
             imageView.image = todayItem.image
             descriptionLabel.text = todayItem.description
+            descriptionLabel.textColor = todayItem.labelColor
             
             backgroundColor = todayItem.backgroundColor
         }
@@ -22,7 +25,7 @@ class TodayCell: BaseTodayCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        backgroundColor = .tertiarySystemBackground
+        backgroundColor = .systemBackground
         layer.cornerRadius = 16
         clipsToBounds = true
         

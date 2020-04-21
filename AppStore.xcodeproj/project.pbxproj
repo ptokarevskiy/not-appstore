@@ -31,6 +31,7 @@
 		A48B68BA2443251800379A45 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48B68B92443251800379A45 /* VerticalStackView.swift */; };
 		A48B68BD244337E200379A45 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48B68BC244337E200379A45 /* SearchResult.swift */; };
 		A48B68C0244341F000379A45 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48B68BF244341F000379A45 /* Service.swift */; };
+		A4B57B20244EF91400C9A7B3 /* BackEnabledNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B57B1F244EF91400C9A7B3 /* BackEnabledNavigationController.swift */; };
 		A4B85683244AF07400A28516 /* TodayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B85682244AF07400A28516 /* TodayController.swift */; };
 		A4B85686244AF20B00A28516 /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B85685244AF20B00A28516 /* TodayCell.swift */; };
 		A4B85688244AFD3300A28516 /* AppFullscreenHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B85687244AFD3300A28516 /* AppFullscreenHeaderCell.swift */; };
@@ -76,6 +77,7 @@
 		A48B68B92443251800379A45 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		A48B68BC244337E200379A45 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		A48B68BF244341F000379A45 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		A4B57B1F244EF91400C9A7B3 /* BackEnabledNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackEnabledNavigationController.swift; sourceTree = "<group>"; };
 		A4B85682244AF07400A28516 /* TodayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayController.swift; sourceTree = "<group>"; };
 		A4B85685244AF20B00A28516 /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
 		A4B85687244AFD3300A28516 /* AppFullscreenHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenHeaderCell.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				A4B85682244AF07400A28516 /* TodayController.swift */,
 				A4B85689244AFF7800A28516 /* AppFullscreenController.swift */,
 				A47CC89F244DD4390058F66F /* TodayMultipleAppsController.swift */,
+				A4B57B1F244EF91400C9A7B3 /* BackEnabledNavigationController.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				A40ADA312447182A00C74B9F /* BetterSnappingLayout.swift in Sources */,
 				A4E94FCE2440DAD1000FF6B8 /* AppsSearchController.swift in Sources */,
 				A4B8568A244AFF7800A28516 /* AppFullscreenController.swift in Sources */,
+				A4B57B20244EF91400C9A7B3 /* BackEnabledNavigationController.swift in Sources */,
 				A47CC8A0244DD4390058F66F /* TodayMultipleAppsController.swift in Sources */,
 				A47CC89C244C8D190058F66F /* TodayMultipleAppCell.swift in Sources */,
 				A40ADA342447222D00C74B9F /* AppDetailController.swift in Sources */,
