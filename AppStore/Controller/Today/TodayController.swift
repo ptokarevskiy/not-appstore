@@ -46,6 +46,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseTodayCell
         cell.todayItem = items[indexPath.item]
         
+        (cell as? TodayMultipleAppCell)?.multipleAppController.collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMultipleAppsTap)))
 //        if let cell = cell as? TodayCell {
 //            cell.todayItem = items[indexPath.item]
 //        } else if let cell = cell as? TodayMultipleAppCell {
@@ -62,6 +63,29 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! TodayCell
 //        cell.todayItem = items[indexPath.item]
 //        return cell
+    }
+    
+    @objc fileprivate func handleMultipleAppsTap(gesture: UIGestureRecognizer) {
+        let collectionView = gesture.view
+        
+        // figure out which cell were clicking into
+        var superview = collectionView?.superview
+        
+        while superview != nil {
+            if let cell = superview as? TodayMultipleAppCell {
+                guard let indexPath = self.collectionView.indexPath(for: cell) else {
+                    return
+                }
+                let apps = self.items[indexPath.item].apps
+                let fullController = TodayMultipleAppsController(mode: .fullscreen)
+                fullController.apps = apps
+                let fullscreenNavigationControlller = BackEnabledNavigationController(rootViewController: fullController)
+                fullscreenNavigationControlller.modalPresentationStyle = .fullScreen
+                present(fullscreenNavigationControlller, animated: true)
+                return
+            }
+            superview = superview?.superview
+        }
     }
     
     fileprivate func fetchData() {
