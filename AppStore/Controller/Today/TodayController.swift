@@ -6,18 +6,32 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     var appFullscreenController: AppFullscreenController!
     
-    let items = [TodayItem.init(category: "The daily list", title: "Test-Drive These CarPlay Apps", image: UIImage(named: "garden")!, description: "", backgroundColor: .secondarySystemBackground, cellType: .multiple),
-                 TodayItem.init(category: "Life Hack", title: "Utilizing your time", image: UIImage(named: "garden")!, description: "All the tools and apps you need to intelligently organize your life the right way", backgroundColor: .secondarySystemBackground, cellType: .single),
-                 TodayItem.init(category: "Holidays", title: "Travel on a Budget", image: UIImage(named: "holiday")!, description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9838892817, green: 0.9626765847, blue: 0.7271130681, alpha: 1), cellType: .single)]
+//    let items = [TodayItem.init(category: "The daily list", title: "Test-Drive These CarPlay Apps", image: UIImage(named: "garden")!, description: "", backgroundColor: .secondarySystemBackground, cellType: .multiple),
+//                 TodayItem.init(category: "Life Hack", title: "Utilizing your time", image: UIImage(named: "garden")!, description: "All the tools and apps you need to intelligently organize your life the right way", backgroundColor: .secondarySystemBackground, cellType: .single),
+//                 TodayItem.init(category: "Holidays", title: "Travel on a Budget", image: UIImage(named: "holiday")!, description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9838892817, green: 0.9626765847, blue: 0.7271130681, alpha: 1), cellType: .single)]
+    
+    var items = [TodayItem]()
+    var activityIndicatorView: UIActivityIndicatorView = {
+       let aiv = UIActivityIndicatorView()
+        aiv.style = .large
+        aiv.color = .label
+        aiv.hidesWhenStopped = true
+        aiv.startAnimating()
+        return aiv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.centerInSuperview()
+        fetchData()
         
         navigationController?.isNavigationBarHidden = true
         
         collectionView.backgroundColor = .systemBackground
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayItem.CellType.single.rawValue)
         collectionView.register(TodayMultipleAppCell.self, forCellWithReuseIdentifier: TodayItem.CellType.multiple.rawValue)
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -42,6 +56,40 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! TodayCell
 //        cell.todayItem = items[indexPath.item]
 //        return cell
+    }
+    
+    fileprivate func fetchData() {
+        //dispatchGroup
+        let dispatchGroup = DispatchGroup()
+        var topGrossingGroup: AppGroup?
+        var gamesGroup: AppGroup?
+        
+        dispatchGroup.enter()
+        Service.shared.fetchTopGrossing { (appGroup, error) in
+            
+            topGrossingGroup = appGroup
+            
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        Service.shared.fetchGames { (appGroup, error) in
+            gamesGroup = appGroup
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.activityIndicatorView.stopAnimating()
+            
+            self.items = [
+                TodayItem.init(category: "Daily list", title: topGrossingGroup?.feed.title ?? "", image: UIImage(named: "garden")!, description: "", backgroundColor: .secondarySystemBackground, cellType: .multiple, apps: topGrossingGroup?.feed.results ?? []),
+                TodayItem.init(category: "Daily list", title: gamesGroup?.feed.title ?? "", image: UIImage(named: "garden")!, description: "", backgroundColor: .secondarySystemBackground, cellType: .multiple, apps: gamesGroup?.feed.results ?? []),
+                TodayItem.init(category: "Life Hack", title: "Utilizing your time", image: UIImage(named: "garden")!, description: "All the tools and apps you need to intelligently organize your life the right way", backgroundColor: .secondarySystemBackground, cellType: .single, apps: [])
+            ]
+            
+            self.collectionView.reloadData()
+        }
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -86,7 +134,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         guard let startingframe = cell.superview?.convert(cell.frame, to: nil) else { return }
 
         self.startingFrame = startingframe
-        print("Starting frame:",startingFrame)
         //Autolayout constraint animations
         //4 anchors
         fullscreenView.translatesAutoresizingMaskIntoConstraints = false
@@ -129,7 +176,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 //            self.appFullscreenController.tableView.contentOffset = .zero
             
             guard let startingFrame = self.startingFrame else { return }
-            print("Frame to dissmiss:",startingFrame)
             self.topConstraint?.constant = startingFrame.origin.y
             self.leadingConstraint?.constant = startingFrame.origin.x
             self.widthConstraint?.constant = startingFrame.width

@@ -6,6 +6,9 @@ class TodayMultipleAppCell: BaseTodayCell {
             categoryLabel.text = todayItem.category.uppercased()
             titleLabel.text = todayItem.title
             backgroundColor = todayItem.backgroundColor
+            
+            multipleAppController.results = todayItem.apps
+            multipleAppController.collectionView.reloadData()
         }
     }
     

@@ -10,13 +10,15 @@ class TodayMultipleAppsController: BaseListController, UICollectionViewDelegateF
         collectionView.backgroundColor = .clear
         collectionView.isScrollEnabled = false
         collectionView.register(MultipleAppCell.self, forCellWithReuseIdentifier: cellId)
-        Service.shared.fetchGames { (appGroup, error) in
-           
-            self.results = appGroup?.feed.results ?? []
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
+        
+        //never execute fetch code in view
+//        Service.shared.fetchGames { (appGroup, error) in
+//
+//            self.results = appGroup?.feed.results ?? []
+//            DispatchQueue.main.async {
+//                self.collectionView.reloadData()
+//            }
+//        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -40,6 +42,12 @@ class TodayMultipleAppsController: BaseListController, UICollectionViewDelegateF
         //default 10
         return spacing
     }
+    
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let appId = results[indexPath.item].id
+//        let appDetailsController = AppDetailController(appId: appId)
+//        navigationController?.pushViewController(appDetailsController, animated: true)
+//    }
 }
 
 
