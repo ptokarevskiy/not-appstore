@@ -311,11 +311,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
             showDailyListFullScreen(indexPath)
         default :
             showSingleAppFullScreen(indexPath)
-        }
-        
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        cell.alpha = 0
-    
+        }    
     }
 }
 
