@@ -184,18 +184,43 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
         self.startingFrame = startingframe
     }
     
+    var appFullscreenBeginOffset: CGFloat = 0
+    
     @objc fileprivate func handleDrag(gesture: UIPanGestureRecognizer) {
+        if gesture.state == .began {
+            appFullscreenBeginOffset = appFullscreenController.tableView.contentOffset.y
+            //            print(appFullscreenBeginOffset)
+        }
+        
+        if appFullscreenController.tableView.contentOffset.y > 0 {
+            return
+        }
+        
         let translationY = gesture.translation(in: appFullscreenController.view).y
         print(translationY)
         
-        
         if gesture.state == .changed {
-            let scale = 1 - translationY / 1000
+            if translationY > 0 {
+                let trueOffset = translationY - appFullscreenBeginOffset
+                
+                var scale = 1 - trueOffset / 1000
+                
+                print(trueOffset, scale)
+                
+                scale = min(1, scale)
+                scale = max(0.75, scale)
+                
+                let transform: CGAffineTransform = .init(scaleX: scale, y: scale)
+                self.appFullscreenController.view.transform = transform
+                self.appFullscreenController.tableView.showsVerticalScrollIndicator = false
+            }
             
-            let transform: CGAffineTransform = .init(scaleX: scale, y: scale)
-            self.appFullscreenController.view.transform = transform
         } else if gesture.state == .ended {
-            handleRemoveFullscreenView()
+            if translationY > 0 {
+                handleRemoveFullscreenView()
+            }
+        } else if gesture.state == .cancelled {
+            self.appFullscreenController.view.transform = .identity
         }
     }
     
@@ -219,6 +244,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
     
     fileprivate func beginAnimationAppFullscreen() {
         self.tabBarController?.setTabBar(hidden: true, animated: false)
+        
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             
             self.blurVisualEffect.alpha = 1
@@ -252,6 +278,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
     
     @objc func handleRemoveFullscreenView() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            self.appFullscreenController.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
             
             self.blurVisualEffect.alpha = 0
             self.appFullscreenController.view.transform = .identity
@@ -265,11 +292,10 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
             self.view.layoutIfNeeded()
             
             guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
-            
+//            cell.closeButton.alpha = 0
+            self.appFullscreenController.closeButton.alpha = 0
             cell.todayCell.topConstraint.constant = 24
             cell.layoutIfNeeded()
-            
-            self.appFullscreenController.tableView.contentOffset = .zero
             
         }, completion: { _ in
             self.appFullscreenController.view.removeFromSuperview()
@@ -286,6 +312,10 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
         default :
             showSingleAppFullScreen(indexPath)
         }
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        cell.alpha = 0
+    
     }
 }
 
