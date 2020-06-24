@@ -12,10 +12,12 @@ struct Application: Decodable {
     //If data may not exits use "var" + optional
     var averageUserRating: Float?
     let icon: String
-    let screenshotUrls: [String]
+    var screenshotUrls: [String]?
     var formattedPrice: String?
-    let description: String
+    var description: String?
     var releaseNotes: String?
+    var artistName: String?
+    var collectionName: String?
     
     
     enum CodingKeys: String, CodingKey {

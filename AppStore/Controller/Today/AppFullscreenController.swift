@@ -15,6 +15,14 @@ class AppFullscreenController: UIViewController, UITableViewDataSource, UITableV
             scrollView.isScrollEnabled = false
             scrollView.isScrollEnabled = true
         }
+        
+        let statusBarHeight = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        let translationY = -90 - statusBarHeight
+        let transform = scrollView.contentOffset.y > 100 ? CGAffineTransform(translationX: 0, y: translationY) : .identity
+        
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            self.floatingContainerView.transform = transform
+        })
     }
     
     let tableView = UITableView(frame: .zero,style: .plain)
@@ -41,8 +49,16 @@ class AppFullscreenController: UIViewController, UITableViewDataSource, UITableV
         setupFloatingControls()
     }
     
+    let floatingContainerView = UIView()
+    
+    @objc fileprivate func handleTap(gesture: UIGestureRecognizer) {
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            self.floatingContainerView.transform = .init(translationX: 0, y: -90)
+        })
+    }
+    
     fileprivate func setupFloatingControls() {
-        let floatingContainerView = UIView()
+        
         floatingContainerView.layer.cornerRadius = 16
         floatingContainerView.clipsToBounds = true
         //alternative
@@ -50,12 +66,14 @@ class AppFullscreenController: UIViewController, UITableViewDataSource, UITableV
         
         view.addSubview(floatingContainerView)
         //view.safeAreaLayoutGuide.bottomAnchor might not work with CGAffineTransform.trasntationX on tabBar
-        let bottomPadding = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.windowScene?.statusBarManager?.statusBarFrame.height ?? 16
-        floatingContainerView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: bottomPadding, right: 16), size: .init(width: 0, height: 90))
+//        let bottomPadding = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.windowScene?.statusBarManager?.statusBarFrame.height ?? 16
+        floatingContainerView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: -90, right: 16), size: .init(width: 0, height: 90))
         
         let blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
         floatingContainerView.addSubview(blurVisualEffectView)
         blurVisualEffectView.fillSuperview()
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
         
         //add subviews
         let getButton = UIButton(title: "GET")
@@ -70,6 +88,7 @@ class AppFullscreenController: UIViewController, UITableViewDataSource, UITableV
         imageView.constrainHeight(constant: 68)
         imageView.constrainWidth(constant: 68)
         imageView.image = todayItem?.image
+        imageView.contentMode = .scaleAspectFill
         let stackView = UIStackView(arrangedSubviews: [
             imageView,
             VerticalStackView(arrangedSubviews: [UILabel(text: todayItem?.category ?? "", font: .boldSystemFont(ofSize: 18)),
